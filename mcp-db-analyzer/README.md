@@ -1,6 +1,6 @@
 # MCP DB Analyzer
 
-MCP数据库分析服务，为AI Agent提供数据库分析能力。
+MCP数据库分析服务，为 AI Agent 提供数据库分析能力。
 
 ## 项目结构
 
@@ -20,10 +20,6 @@ mcp-db-analyzer/
 ├── tests/
 │   ├── __init__.py
 │   └── test_tables.py         # pytest测试
-├── opencode.json            # OpenCode MCP配置
-├── .gitignore
-├── pyproject.toml
-└── README.md
 ```
 
 ## 安装
