@@ -5,7 +5,7 @@
 import pymysql
 from typing import Optional
 
-from nexusdb.config import DATABASES
+from mcp_db_analyzer.config import DATABASES
 
 
 class DatabaseConnection:

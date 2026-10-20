@@ -4,8 +4,8 @@
 
 from typing import List, Dict, Any
 
-from nexusdb.db.connection import db_manager
-from nexusdb.config import DATABASES
+from mcp_db_analyzer.db.connection import db_manager
+from mcp_db_analyzer.config import DATABASES
 
 
 def list_tables(database: str) -> List[str]:

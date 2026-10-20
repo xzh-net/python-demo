@@ -6,8 +6,8 @@ import sys
 from typing import List, Dict, Any
 from mcp.server.mcpserver import MCPServer
 
-from nexusdb.tools.tables import list_tables, describe_table
-from nexusdb.db.connection import db_manager
+from mcp_db_analyzer.tools.tables import list_tables, describe_table
+from mcp_db_analyzer.db.connection import db_manager
 
 # 创建 MCP 服务器
 mcp = MCPServer("Database Analyzer")

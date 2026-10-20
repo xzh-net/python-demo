@@ -1,12 +1,12 @@
-# NexusDB
+# MCP DB Analyzer
 
 MCP数据库分析服务，为AI Agent提供数据库分析能力。
 
 ## 项目结构
 
 ```
-nexusdb/
-├── nexusdb/                   # Python包
+mcp-db-analyzer/
+├── mcp_db_analyzer/            # Python包
 │   ├── __init__.py
 │   ├── __main__.py
 │   ├── config.py              # 数据库配置
@@ -39,7 +39,7 @@ pip install -e .
 本项目仅支持 stdio 模式，用于本地 OpenCode 集成。
 
 ```bash
-python -m nexusdb.server
+python -m mcp_db_analyzer.server
 ```
 
 ### OpenCode集成
@@ -62,7 +62,7 @@ python -m nexusdb.server
   "mcp": {
     "db-analyzer": {
       "type": "local",
-      "command": ["python", "-m", "nexusdb.server"],
+      "command": ["python", "-m", "mcp_db_analyzer.server"],
       "enabled": true
     }
   }
@@ -81,7 +81,7 @@ python -m nexusdb.server
   "mcp": {
     "db-analyzer": {
       "type": "local",
-      "command": ["python", "-m", "nexusdb.server"],
+      "command": ["python", "-m", "mcp_db_analyzer.server"],
       "enabled": true
     }
   }
@@ -101,7 +101,7 @@ opencode mcp list
 
 ```
 Name          Type    Status  Command
-db-analyzer   local   ready   python -m nexusdb.server
+db-analyzer   local   ready   python -m mcp_db_analyzer.server
 ```
 
 其他管理命令：
@@ -126,7 +126,7 @@ opencode mcp debug <server-name>
   "mcpServers": {
     "db-analyzer": {
       "command": "python",
-      "args": ["-m", "nexusdb.server"]
+      "args": ["-m", "mcp_db_analyzer.server"]
     }
   }
 }
@@ -141,7 +141,7 @@ opencode mcp debug <server-name>
   "mcpServers": {
     "db-analyzer": {
       "command": "python",
-      "args": ["-m", "nexusdb.server"]
+      "args": ["-m", "mcp_db_analyzer.server"]
     }
   }
 }
@@ -183,19 +183,17 @@ pytest tests/test_tables.py::TestListTables
 pytest tests/test_tables.py::TestListTables::test_list_tables_returns_list
 ```
 
-### MCP Inspector测试
+### MCP Inspector 测试
 
-使用MCP Inspector交互式测试工具：
+运行 `MCP Inspector` 交互式测试工具
 
 ```bash
-npx @modelcontextprotocol/inspector python -m nexusdb.server
+npx @modelcontextprotocol/inspector python -m mcp_db_analyzer.server
 ```
 
-打开浏览器访问Inspector界面，可以：
-- 查看所有可用工具
-- 交互式测试每个工具
-- 查看请求/响应详情
-
+![链接](doc/assets/1.png)
+![工具](doc/assets/2.png)
+![运行](doc/assets/3.png)
 
 ## MCP工具
 
@@ -206,14 +204,30 @@ npx @modelcontextprotocol/inspector python -m nexusdb.server
 
 ## 配置
 
-编辑 `nexusdb/config.py` 修改数据库连接：
+编辑 `mcp_db_analyzer/config.py` 修改数据库连接：
 
 ```python
+# 数据库 A 配置
 DB_A = {
-    "host": "127.0.0.1",
+    "host": "192.168.31.161",
     "port": 3306,
-    "user": "your_user",
-    "password": "your_password",
-    "database": "your_database"
+    "user": "root",
+    "password": "123456",
+    "database": "geo"
+}
+
+# 数据库 B 配置
+DB_B = {
+    "host": "192.168.31.161",
+    "port": 3306,
+    "user": "root",
+    "password": "123456",
+    "database": "iam_identity"
+}
+
+# 数据库映射
+DATABASES = {
+    "A": DB_A,
+    "B": DB_B
 }
 ```

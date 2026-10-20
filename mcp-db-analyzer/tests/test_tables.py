@@ -3,7 +3,7 @@
 """
 
 import pytest
-from nexusdb.tools.tables import list_tables, describe_table
+from mcp_db_analyzer.tools.tables import list_tables, describe_table
 
 
 class TestListTables:

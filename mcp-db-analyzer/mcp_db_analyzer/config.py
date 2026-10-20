@@ -13,11 +13,11 @@ DB_A = {
 
 # 数据库 B 配置
 DB_B = {
-    "host": "192.168.1.20",
+    "host": "192.168.31.161",
     "port": 3306,
-    "user": "ai_reader",
-    "password": "******",
-    "database": "db_b"
+    "user": "root",
+    "password": "123456",
+    "database": "iam_identity"
 }
 
 # 数据库映射
